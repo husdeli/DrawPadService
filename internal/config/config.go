@@ -8,9 +8,11 @@ import (
 )
 
 type Config struct {
-	Port  string `env:"PORT" env-required:"true"`
-	Host  string `env:"HOST" env-required:"true"`
-	IsDev bool   `env:"IS_DEV" env-required:"true"`
+	Port        int    `env:"PORT" env-required:"true"`
+	Host        string `env:"HOST" env-required:"true"`
+	IsDev       bool   `env:"IS_DEV" env-required:"true"`
+	CacheDbHost string `env:"CACHE_DB_HOST" env-required:"true"`
+	CacheDbPort int    `env:"CACHE_DB_PORT" env-required:"true"`
 }
 
 var instance *Config
@@ -26,7 +28,6 @@ func GetConfig() *Config {
 			logger.Info(cleanenv.GetDescription(instance, nil))
 			logger.Fatal(err)
 		}
-		logger.Infof("Read app config %v", instance)
 	})
 	return instance
 }

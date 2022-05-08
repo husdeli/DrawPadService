@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  api:
+    container_name: drawpadservice-container
+    image: drawpadservice-image
+    build: 
+      context: .
+      dockerfile: cmd/main/Dockerfile
+    volumes:
+      - /tmp/app:/var/log/app
+    environment:
+      - APP_ENV=local
+    ports:
+      - 8080:8080

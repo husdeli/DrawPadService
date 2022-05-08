@@ -1,6 +1,6 @@
 package user
 
-// Implementation check
+// Interface implementation check
 var _ UsersRepository = NewRepository()
 
 // Implementation
